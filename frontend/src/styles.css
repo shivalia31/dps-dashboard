@@ -1,0 +1,257 @@
+
+:root {
+  /* Core Colors */
+  --bg: #0b0f14;
+  --page: #0e141b;
+  --panel: #11161c;
+  --card: #141b22;
+  --muted: #9ca3af;
+  --text: #e5e7eb;
+  --accent: #3b82f6;   /* Bright blue */
+  --accent-glow: #60a5fa;
+  --border: rgba(255, 255, 255, 0.06);
+  --input-bg: rgba(255, 255, 255, 0.06);
+  --json-bg: #0a1117;
+  --error: #ef4444;
+  --success: #22c55e;
+  --radius: 10px;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --transition: 0.2s ease-in-out;
+}
+
+/* Reset & Basics */
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(180deg, var(--bg), #06080a 120%);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Layout Container */
+.app {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 24px;
+  background: var(--page);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: background var(--transition);
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.header .muted {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Navigation Tabs */
+nav {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+button.tab {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-weight: 500;
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+
+button.tab:hover {
+  color: var(--accent-glow);
+  transform: translateY(-1px);
+}
+
+button.tab.active {
+  background: linear-gradient(90deg, var(--accent), var(--accent-glow));
+  color: white;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+  border-color: var(--accent-glow);
+}
+
+/* Main Panel */
+.panel {
+  padding: 18px;
+  margin-top: 16px;
+  background: var(--panel);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  transition: background var(--transition);
+}
+
+/* Input Fields */
+.input {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--input-bg);
+  color: var(--text);
+  outline: none;
+  width: 320px;
+  transition: border var(--transition), box-shadow var(--transition);
+}
+
+.input:focus {
+  border: 1px solid var(--accent);
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.4);
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Buttons */
+button {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--text);
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+
+button:hover {
+  background: rgba(59, 130, 246, 0.25);
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Card Component */
+.card {
+  padding: 14px;
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  margin-top: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: box-shadow var(--transition);
+}
+
+.card:hover {
+  box-shadow: 0 0 16px rgba(59, 130, 246, 0.1);
+}
+
+/* Preformatted JSON Blocks */
+pre.json {
+  max-height: 360px;
+  overflow: auto;
+  background: var(--json-bg);
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: #bcd3e6;
+  white-space: pre-wrap;
+  font-family: monospace;
+}
+
+/* Expandable details */
+details {
+  background: transparent;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+summary {
+  cursor: pointer;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Error & Success Messages */
+.error {
+  color: var(--error);
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.success {
+  color: var(--success);
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+/* Muted / Small Text */
+.muted {
+  color: var(--muted);
+}
+
+small.muted {
+  color: var(--muted);
+}
+
+/* Scrollbars (for JSON viewer) */
+pre.json::-webkit-scrollbar {
+  width: 8px;
+}
+pre.json::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+pre.json::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .app {
+    margin: 10px;
+    padding: 16px;
+  }
+
+  .input {
+    width: 100%;
+  }
+
+  nav {
+    flex-wrap: wrap;
+  }
+}
+
+/* Optional glow animation for accent elements */
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 6px rgba(59, 130, 246, 0.2); }
+  50% { box-shadow: 0 0 16px rgba(59, 130, 246, 0.6); }
+  100% { box-shadow: 0 0 6px rgba(59, 130, 246, 0.2); }
+}
+
+/* Highlight active tab glow */
+button.tab.active {
+  animation: glowPulse 2.5s infinite ease-in-out;
+}

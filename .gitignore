@@ -1,0 +1,9 @@
+# Local settings & venv
+backend/local.settings.json
+backend/.venv/
+backend/__pycache__/
+frontend/node_modules/
+frontend/build/
+*.log
+.DS_Store
+.env
